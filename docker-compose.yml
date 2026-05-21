@@ -1,0 +1,43 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: server_docker
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./server/.env
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client_docker
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    env_file:
+      - ./client/.env
+    environment:
+      API_PROXY_TARGET: http://server:3001
+
+# mongo-database:
+#    container_name: mongo-database
+#    image: mongo:7
+#    restart: always
+#    ports:
+#      - 27017:27017
+#    command: --auth --bind_ip 0.0.0.0
+#    environment:
+#       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+#       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+#       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+#    env_file:
+#      - .env
+#    volumes:
+#      - ./data/db:/data/db
+
+# volumes:
+#    mongo-data:

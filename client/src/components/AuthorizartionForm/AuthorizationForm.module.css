@@ -1,0 +1,36 @@
+.formContainer input {
+    background-color: #FAFAFA;
+    border: 1px solid #DBDBDB;
+    height: 38px;
+    border-radius: 3px;
+    padding-left: 8px;
+    font-size: 12px;
+    color: #000000;
+}
+
+.formContainer input::placeholder {
+    color: #737373;
+    font-size: 12px;
+}
+
+.formContainer button {
+    background-color: #0095F6;
+    color: #FFFFFF;
+    height: 38px;
+    border-radius: 8px;
+}
+
+.error {
+    display: block;
+    color: #ff0014;
+    font-size: 12px;
+    line-height: 1.25;
+    margin-top: 2px;
+}
+
+.errorLink {
+    color: #ff0014;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: underline;
+}
